@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+section{
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+header{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 100px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  position: relative;
+  font-size: 2em;
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+header .toggle{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: url(menu.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .toggle.active{
+  background: url(close.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-size: 25px;
+}
+
+header .toggle:before{
+  position: absolute;
+  content: 'menu';
+  right: 45px;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 14px;
+  padding: 2px 5px;
+  background: #fff;
+  color: #111;
+}
+header .toggle.active::before{
+  content: 'close';
+}
+
+section video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.glass{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  backdrop-filter: blur(15px);
+  z-index: 1;
+  box-shadow: 10px 0 15px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+  transition-delay: 1s;
+}
+
+section.active .glass{
+  width: 100%;
+  backdrop-filter: blur(20px);
+  transition-delay: 0s;
+  box-shadow: 10px 0 15px rgba(0, 0, 0, 0.5);
+}
+
+section .content{
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  transition: 0.5s;
+  transition-delay: 1s;
+}
+
+section .content h2{
+  position: relative;
+  color: #fff;
+  font-size: 6vw;
+  line-height: 0.55em;
+  text-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+section.active .content{
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-200px);
+  transition-delay: 0s;
+}
+section .content h2 span{
+  font-size: 0.2em;
+  border: 2px solid white;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 5px;
+  background: rgb(12, 10, 10);
+  color: rgb(228, 224, 224);
+  padding: 0 10px;
+  text-shadow: 0 5px 5px rgba(0, 0, 0, 0);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+section .sci{
+  position: absolute;
+  bottom: 40px;
+  right: 100px;
+  display: flex;
+  z-index: 100;
+}
+
+section .sci li{
+  list-style: none;
+  margin: 5px;
+  padding: 0 6px;
+  background: #111;
+  transition: 0.5s;
+  border: 2px solid white;
+  transition-delay: calc(0.2s * var(--i));
+}
+
+section.active .sci li{
+  opacity: 0;
+  visibility: hidden;
+  transform: translateZ(100px);
+}
+
+section .sci li a{
+  color: rgb(241, 236, 236);
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+section .navigation{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+section .navigation li{
+  list-style: none;
+  text-align: center;
+  margin: 15px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+  transform: translate(200px);
+  transition-delay: calc(0.2s * var(--i));
+}
+
+section.active .navigation li{
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0px);
+}
+
+section .navigation li a{
+  color: whitesmoke;
+  font-size: 1.5rem;
+  border: 2px solid white;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-weight: 300;
+  text-transform: uppercase;
+  background: black;
+  padding: 4px 10px;
+  display: inline-block;
+}
+
+section .navigation li a:hover{
+  background: whitesmoke;
+  color: black;
+  letter-spacing: 10px;
+  text-transform: lowercase;
+  font-weight: 700;
+}
+
+@media (max-width:991px){
+  header{
+    padding: 20px;
+  }
+  section .sci{
+    bottom: 20px;
+    right: 20px;
+  }
+  .glass{
+    width: 50%;
+  }
+  section .content h2{
+     font-size: 15vw;
+  }
+  section .content h2 span{
+    font-size: 0.25em;
+    letter-spacing: 2px;
+    padding: 0 5px;
+    
+  }
+}
